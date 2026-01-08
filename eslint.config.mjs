@@ -15,7 +15,7 @@ const eslintConfig = defineConfig([
   ]),
   {
     rules: {
-      'no-console': 'error',
+      'no-console': 'warn',
       '@typescript-eslint/no-explicit-any': 0,
       '@typescript-eslint/no-unused-vars': 1,
     },

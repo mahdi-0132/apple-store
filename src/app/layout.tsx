@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { MonitorSmartphone, ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,16 +20,36 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children,//slot for children
+  ads //slot for ads
 }: Readonly<{
   children: React.ReactNode;
+  ads: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className='flex flex-col justify-between min-h-screen'>
+          <header className='fixed flex justify-between items-center shadow-xl bg-white px-20 h-20 z-40 w-full'>
+        <div className='flex items-center gap-3'> 
+          <MonitorSmartphone/>
+          <Link href= "/" className='font-bold text-2xl'>Apple store</Link>
+        </div>
+        <div>
+          <ShoppingCart/>
+        </div>
+          </header>
+
+        <div className='px-20 mt-28'>{children}</div>
+        <div className='my-10 mx-auto flex justify-center'> 
+          {ads}
+        </div>
+        <footer className='bg-black text-white flex items-center justify-center h-10 w-full'>
+          <p>&copy; 2026 JS with Mahdi. All rights reserved</p>
+        </footer>
+        </main>
       </body>
     </html>
   );
